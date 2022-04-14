@@ -1,0 +1,525 @@
+client_cache_server_1     | info: Microsoft.Hosting.Lifetime[0]
+client_cache_server_1     |       Now listening on: http://[::]:80
+client_cache_server_1     | info: Microsoft.Hosting.Lifetime[0]
+client_cache_server_1     |       Application started. Press Ctrl+C to shut down.
+client_cache_server_1     | info: Microsoft.Hosting.Lifetime[0]
+client_cache_server_1     |       Hosting environment: Production
+client_cache_server_1     | info: Microsoft.Hosting.Lifetime[0]
+client_cache_server_1     |       Content root path: /app
+catalog_server_replica_1  | info: Microsoft.Hosting.Lifetime[0]
+catalog_server_replica_1  |       Now listening on: http://[::]:80
+catalog_server_replica_1  | info: Microsoft.Hosting.Lifetime[0]
+catalog_server_replica_1  |       Application started. Press Ctrl+C to shut down.
+catalog_server_replica_1  | info: Microsoft.Hosting.Lifetime[0]
+catalog_server_replica_1  |       Hosting environment: Production
+catalog_server_replica_1  | info: Microsoft.Hosting.Lifetime[0]
+catalog_server_replica_1  |       Content root path: /app
+catalog_server_1          | info: Microsoft.Hosting.Lifetime[0]
+catalog_server_1          |       Now listening on: http://[::]:80
+catalog_server_1          | info: Microsoft.Hosting.Lifetime[0]
+catalog_server_1          |       Application started. Press Ctrl+C to shut down.
+catalog_server_1          | info: Microsoft.Hosting.Lifetime[0]
+catalog_server_1          |       Hosting environment: Production
+catalog_server_1          | info: Microsoft.Hosting.Lifetime[0]
+catalog_server_1          |       Content root path: /app
+order_server_replica_1    | info: Microsoft.Hosting.Lifetime[0]
+order_server_replica_1    |       Now listening on: http://[::]:80
+order_server_replica_1    | info: Microsoft.Hosting.Lifetime[0]
+order_server_replica_1    |       Application started. Press Ctrl+C to shut down.
+order_server_replica_1    | info: Microsoft.Hosting.Lifetime[0]
+order_server_replica_1    |       Hosting environment: Production
+order_server_replica_1    | info: Microsoft.Hosting.Lifetime[0]
+order_server_replica_1    |       Content root path: /app
+order_server_1            | info: Microsoft.Hosting.Lifetime[0]
+order_server_1            |       Now listening on: http://[::]:80
+order_server_1            | info: Microsoft.Hosting.Lifetime[0]
+order_server_1            |       Application started. Press Ctrl+C to shut down.
+order_server_1            | info: Microsoft.Hosting.Lifetime[0]
+order_server_1            |       Hosting environment: Production
+order_server_1            | info: Microsoft.Hosting.Lifetime[0]
+order_server_1            |       Content root path: /app
+client_cache_server_1     | Cache miss orders
+client_cache_server_1     | Send getAllOrders request to order_replica
+order_server_replica_1    | The orders have been sent
+client_cache_server_1     | Cache hit orders  
+client_cache_server_1     | Cache hit orders  
+client_cache_server_1     | Cache hit orders  
+client_cache_server_1     | Cache hit orders  
+client_cache_server_1     | Cache miss books not exist
+client_cache_server_1     | Send getAllBooks request to catalog_replica
+catalog_server_replica_1  | The books have been sent
+client_cache_server_1     | Cache hit books exist
+client_cache_server_1     | Cache hit books exist
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+client_cache_server_1     |       Start processing HTTP request POST http://catalog_replica/api/books/addBookToCacheAndSync
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+client_cache_server_1     |       Sending HTTP request POST http://catalog_replica/api/books/addBookToCacheAndSync
+client_cache_server_1     | send addBook request to catalog_replica server
+catalog_server_replica_1  | The book has been added successfully
+catalog_server_replica_1  | Data has been saved successfully
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_replica_1  |       Start processing HTTP request POST http://catalog/api/books/addBook
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_replica_1  |       Sending HTTP request POST http://catalog/api/books/addBook
+catalog_server_replica_1  | Sync The Other Server
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_replica_1  |       Start processing HTTP request DELETE http://client_cache_server/api/cache/books
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_replica_1  |       Sending HTTP request DELETE http://client_cache_server/api/cache/books
+catalog_server_replica_1  | send delete to the cache server
+client_cache_server_1     | Data with Key : books has been deleted successfully
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+client_cache_server_1     |       Received HTTP response headers after 412.9485ms - 200
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+client_cache_server_1     |       End processing HTTP request after 421.6637ms - 200
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_replica_1  |       Received HTTP response headers after 24.3267ms - 404
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_replica_1  |       End processing HTTP request after 29.3374ms - 404
+catalog_server_1          | The book has been added successfully
+catalog_server_1          | Data has been saved successfully
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_replica_1  |       Received HTTP response headers after 1218.3558ms - 200
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_replica_1  |       End processing HTTP request after 1228.1429ms - 200
+client_cache_server_1     | Cache miss books not exist
+client_cache_server_1     | Send getAllBooks request to catalog
+catalog_server_1          | The books have been sent
+client_cache_server_1     | Cache hit books exist
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+client_cache_server_1     |       Start processing HTTP request POST http://catalog/api/books/addBookToCacheAndSync
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+client_cache_server_1     |       Sending HTTP request POST http://catalog/api/books/addBookToCacheAndSync
+client_cache_server_1     | send addBook request to catalog server
+catalog_server_1          | The book has been added successfully
+catalog_server_1          | Data has been saved successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request POST http://catalog_replica/api/books/addBook
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request POST http://catalog_replica/api/books/addBook
+catalog_server_1          | Sync The Other Server
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request DELETE http://client_cache_server/api/cache/books
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request DELETE http://client_cache_server/api/cache/books
+catalog_server_1          | send delete to the cache server
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+client_cache_server_1     |       Received HTTP response headers after 103.277ms - 200
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+client_cache_server_1     |       End processing HTTP request after 103.3938ms - 200
+client_cache_server_1     | Data with Key : books has been deleted successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 9.202ms - 404
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 13.6121ms - 404
+catalog_server_replica_1  | The book has been added successfully
+catalog_server_replica_1  | Data has been saved successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 93.4797ms - 200
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 100.0106ms - 200
+client_cache_server_1     | Cache miss books not exist
+client_cache_server_1     | Send getAllBooks request to catalog_replica
+catalog_server_replica_1  | The books have been sent
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+client_cache_server_1     |       Start processing HTTP request PATCH http://catalog_replica/api/books/updateCacheAndSync/503fc0f7-c326-4742-984f-a531d8e173f8
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+client_cache_server_1     |       Sending HTTP request PATCH http://catalog_replica/api/books/updateCacheAndSync/503fc0f7-c326-4742-984f-a531d8e173f8
+client_cache_server_1     | send updateBook request to catalog_replica server
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_replica_1  |       Start processing HTTP request PATCH http://catalog/api/books/update/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_replica_1  |       Sending HTTP request PATCH http://catalog/api/books/update/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_replica_1  | Sync The Other Server
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_replica_1  |       Start processing HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_replica_1  |       Sending HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_replica_1  | Send delete request to the cache server(delete the book)
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_replica_1  |       Start processing HTTP request DELETE http://client_cache_server/api/cache/books
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_replica_1  |       Sending HTTP request DELETE http://client_cache_server/api/cache/books
+catalog_server_replica_1  | Send delete request to the cache server(delete all of the books)
+client_cache_server_1     | Data with Key : books has been deleted successfully
+catalog_server_replica_1  | Data has been update successfully
+catalog_server_replica_1  | Data has been saved successfully
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_replica_1  |       Received HTTP response headers after 1.965ms - 404
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_replica_1  |       End processing HTTP request after 2.0353ms - 404
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_replica_1  |       Received HTTP response headers after 2.5528ms - 404
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_replica_1  |       End processing HTTP request after 2.6052ms - 404
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+client_cache_server_1     |       Received HTTP response headers after 89.5541ms - 204
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+client_cache_server_1     |       End processing HTTP request after 89.6491ms - 204
+catalog_server_1          | Data has been update successfully
+catalog_server_1          | Data has been saved successfully
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_replica_1  |       Received HTTP response headers after 69.1142ms - 204
+catalog_server_replica_1  | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_replica_1  |       End processing HTTP request after 69.2025ms - 204
+client_cache_server_1     | Cache miss book with id :503fc0f7-c326-4742-984f-a531d8e173f8
+client_cache_server_1     | Send getBookInfo request to catalog
+catalog_server_1          | The book has been sent
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+client_cache_server_1     |       Start processing HTTP request PATCH http://catalog/api/books/updateCacheAndSync/503fc0f7-c326-4742-984f-a531d8e173f8
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+client_cache_server_1     |       Sending HTTP request PATCH http://catalog/api/books/updateCacheAndSync/503fc0f7-c326-4742-984f-a531d8e173f8
+client_cache_server_1     | send updateBook request to catalog server
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request PATCH http://catalog_replica/api/books/update/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request PATCH http://catalog_replica/api/books/update/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | Sync The Other Server
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | Send delete request to the cache server(delete the book)
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request DELETE http://client_cache_server/api/cache/books
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request DELETE http://client_cache_server/api/cache/books
+catalog_server_1          | Send delete request to the cache server(delete all of the books)
+catalog_server_1          | Data has been update successfully
+catalog_server_1          | Data has been saved successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 3.0364ms - 404
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 3.113ms - 404
+client_cache_server_1     | Data with Key : 503fc0f7-c326-4742-984f-a531d8e173f8 has been deleted successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 4.5348ms - 404
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 4.6332ms - 404
+catalog_server_replica_1  | Data has been update successfully
+catalog_server_replica_1  | Data has been saved successfully
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+client_cache_server_1     |       Received HTTP response headers after 32.7228ms - 204
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+client_cache_server_1     |       End processing HTTP request after 32.8225ms - 204
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 20.6151ms - 204
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 20.7095ms - 204
+client_cache_server_1     | Cache miss book with id :503fc0f7-c326-4742-984f-a531d8e173f8
+client_cache_server_1     | Send getBookInfo request to catalog_replica
+catalog_server_replica_1  | The book has been sent
+client_cache_server_1     | Cache miss topic :h
+client_cache_server_1     | Send searchByTopic request to catalog
+catalog_server_1          | The books have been sent
+client_cache_server_1     | Cache miss topic :ha
+client_cache_server_1     | Send searchByTopic request to catalog_replica
+catalog_server_replica_1  | The books have been sent
+client_cache_server_1     | Cache hit topic :ha
+client_cache_server_1     | Cache miss topic :m
+client_cache_server_1     | Send searchByTopic request to catalog
+catalog_server_1          | The books have been sent
+client_cache_server_1     | Cache hit orders  
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+client_cache_server_1     |       Start processing HTTP request POST http://order_replica/api/order/addOrderToCacheAndSync
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+client_cache_server_1     |       Sending HTTP request POST http://order_replica/api/order/addOrderToCacheAndSync
+client_cache_server_1     | send addOrder request to order_replica server
+order_server_replica_1    | Send Query request to CatalogServer
+order_server_replica_1    | StockCount > 0  
+order_server_replica_1    | Send Update request to CatalogServer
+catalog_server_1          | update has been done successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request POST http://catalog_replica/api/books/decrease/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request POST http://catalog_replica/api/books/decrease/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | Sync The Other Server
+catalog_server_1          | send delete to the cache server
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+order_server_replica_1    | Purchase done successfully
+client_cache_server_1     | Data with Key : 503fc0f7-c326-4742-984f-a531d8e173f8 has been deleted successfully
+order_server_replica_1    | The order has been added successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 1.7922ms - 404
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 1.8891ms - 404
+catalog_server_replica_1  | update has been done successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 21.1144ms - 200
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 21.2234ms - 200
+order_server_replica_1    | The data have been saved successfully
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+order_server_replica_1    |       Start processing HTTP request POST http://order/api/order/addPureOrder
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+order_server_replica_1    |       Sending HTTP request POST http://order/api/order/addPureOrder
+order_server_replica_1    | Sync The Other Server
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+order_server_replica_1    |       Start processing HTTP request DELETE http://client_cache_server/api/cache/orders
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+order_server_replica_1    |       Sending HTTP request DELETE http://client_cache_server/api/cache/orders
+order_server_replica_1    | send delete to the cache server
+client_cache_server_1     | Data with Key : orders has been deleted successfully
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+client_cache_server_1     |       Received HTTP response headers after 251.7209ms - 200
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+client_cache_server_1     |       End processing HTTP request after 251.86ms - 200
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+order_server_replica_1    |       Received HTTP response headers after 7.5428ms - 404
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+order_server_replica_1    |       End processing HTTP request after 12.2404ms - 404
+order_server_1            | The order has been added successfully
+order_server_1            | The data have been saved successfully
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+order_server_replica_1    |       Received HTTP response headers after 851.139ms - 200
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+order_server_replica_1    |       End processing HTTP request after 856.8595ms - 200
+client_cache_server_1     | Cache miss orders
+client_cache_server_1     | Send getAllOrders request to order
+order_server_1            | The orders have been sent
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+client_cache_server_1     |       Start processing HTTP request POST http://order/api/order/addOrderToCacheAndSync
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+client_cache_server_1     |       Sending HTTP request POST http://order/api/order/addOrderToCacheAndSync
+client_cache_server_1     | send addOrder request to order server
+order_server_1            | Send Query request to CatalogServer
+order_server_1            | StockCount > 0  
+order_server_1            | Send Update request to CatalogServer
+catalog_server_1          | update has been done successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request POST http://catalog_replica/api/books/decrease/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request POST http://catalog_replica/api/books/decrease/503fc0f7-c326-4742-984f-a531d8e173f8
+order_server_1            | Purchase done successfully
+order_server_1            | The order has been added successfully
+catalog_server_1          | Sync The Other Server
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | send delete to the cache server
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 1.7998ms - 404
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 1.8711ms - 404
+order_server_1            | The data have been saved successfully
+catalog_server_replica_1  | update has been done successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 23.6972ms - 200
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 23.7926ms - 200
+order_server_1            | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+order_server_1            |       Start processing HTTP request POST http://order_replica/api/order/addPureOrder
+order_server_1            | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+order_server_1            |       Sending HTTP request POST http://order_replica/api/order/addPureOrder
+order_server_1            | Sync The Other Server
+order_server_1            | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+order_server_1            |       Start processing HTTP request DELETE http://client_cache_server/api/cache/orders
+order_server_1            | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+order_server_1            |       Sending HTTP request DELETE http://client_cache_server/api/cache/orders
+order_server_1            | send delete to the cache server
+client_cache_server_1     | Data with Key : orders has been deleted successfully
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+client_cache_server_1     |       Received HTTP response headers after 103.968ms - 200
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+client_cache_server_1     |       End processing HTTP request after 104.0912ms - 200
+order_server_replica_1    | The order has been added successfully
+order_server_1            | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+order_server_1            |       Received HTTP response headers after 8.6429ms - 404
+order_server_1            | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+order_server_1            |       End processing HTTP request after 13.0693ms - 404
+order_server_replica_1    | The data have been saved successfully
+order_server_1            | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+order_server_1            |       Received HTTP response headers after 42.3881ms - 200
+order_server_1            | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+order_server_1            |       End processing HTTP request after 48.1976ms - 200
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+client_cache_server_1     |       Start processing HTTP request POST http://order_replica/api/order/addOrderToCacheAndSync
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+client_cache_server_1     |       Sending HTTP request POST http://order_replica/api/order/addOrderToCacheAndSync
+client_cache_server_1     | send addOrder request to order_replica server
+order_server_replica_1    | Send Query request to CatalogServer
+order_server_replica_1    | StockCount > 0  
+order_server_replica_1    | Send Update request to CatalogServer
+catalog_server_1          | update has been done successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request POST http://catalog_replica/api/books/decrease/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request POST http://catalog_replica/api/books/decrease/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | Sync The Other Server
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | send delete to the cache server
+order_server_replica_1    | Purchase done successfully
+order_server_replica_1    | The order has been added successfully
+order_server_replica_1    | The data have been saved successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 2.0421ms - 404
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 2.1219ms - 404
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+order_server_replica_1    |       Start processing HTTP request POST http://order/api/order/addPureOrder
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+order_server_replica_1    |       Sending HTTP request POST http://order/api/order/addPureOrder
+order_server_replica_1    | Sync The Other Server
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+order_server_replica_1    |       Start processing HTTP request DELETE http://client_cache_server/api/cache/orders
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+order_server_replica_1    |       Sending HTTP request DELETE http://client_cache_server/api/cache/orders
+order_server_replica_1    | send delete to the cache server
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+client_cache_server_1     |       Received HTTP response headers after 42.6939ms - 200
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+client_cache_server_1     |       End processing HTTP request after 42.8994ms - 200
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+order_server_replica_1    |       Received HTTP response headers after 6.6663ms - 404
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+order_server_replica_1    |       End processing HTTP request after 6.9848ms - 404
+order_server_1            | The order has been added successfully
+catalog_server_replica_1  | update has been done successfully
+order_server_1            | The data have been saved successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 28.7888ms - 200
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 28.9517ms - 200
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+order_server_replica_1    |       Received HTTP response headers after 22.1243ms - 200
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+order_server_replica_1    |       End processing HTTP request after 22.3473ms - 200
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+client_cache_server_1     |       Start processing HTTP request POST http://order/api/order/addOrderToCacheAndSync
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+client_cache_server_1     |       Sending HTTP request POST http://order/api/order/addOrderToCacheAndSync
+client_cache_server_1     | send addOrder request to order server
+order_server_1            | Send Query request to CatalogServer
+order_server_1            | StockCount > 0  
+order_server_1            | Send Update request to CatalogServer
+catalog_server_1          | update has been done successfully
+catalog_server_1          | Sync The Other Server
+catalog_server_1          | send delete to the cache server
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request POST http://catalog_replica/api/books/decrease/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request POST http://catalog_replica/api/books/decrease/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+order_server_1            | Purchase done successfully
+order_server_1            | The order has been added successfully
+order_server_1            | The data have been saved successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 3.1587ms - 404
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 3.2146ms - 404
+catalog_server_replica_1  | update has been done successfully
+order_server_1            | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+order_server_1            |       Start processing HTTP request POST http://order_replica/api/order/addPureOrder
+order_server_1            | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+order_server_1            |       Sending HTTP request POST http://order_replica/api/order/addPureOrder
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 11.8087ms - 200
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 11.8924ms - 200
+order_server_1            | Sync The Other Server
+order_server_1            | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+order_server_1            |       Start processing HTTP request DELETE http://client_cache_server/api/cache/orders
+order_server_1            | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+order_server_1            |       Sending HTTP request DELETE http://client_cache_server/api/cache/orders
+order_server_1            | send delete to the cache server
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+client_cache_server_1     |       Received HTTP response headers after 38.7096ms - 200
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+client_cache_server_1     |       End processing HTTP request after 38.7846ms - 200
+order_server_1            | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+order_server_1            |       Received HTTP response headers after 1.4504ms - 404
+order_server_1            | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+order_server_1            |       End processing HTTP request after 1.5516ms - 404
+order_server_replica_1    | The order has been added successfully
+order_server_replica_1    | The data have been saved successfully
+order_server_1            | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+order_server_1            |       Received HTTP response headers after 12.871ms - 200
+order_server_1            | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+order_server_1            |       End processing HTTP request after 12.9774ms - 200
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+client_cache_server_1     |       Start processing HTTP request POST http://order_replica/api/order/addOrderToCacheAndSync
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+client_cache_server_1     |       Sending HTTP request POST http://order_replica/api/order/addOrderToCacheAndSync
+client_cache_server_1     | send addOrder request to order_replica server
+order_server_replica_1    | Send Query request to CatalogServer
+order_server_replica_1    | StockCount > 0  
+order_server_replica_1    | Send Update request to CatalogServer
+catalog_server_1          | update has been done successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request POST http://catalog_replica/api/books/decrease/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request POST http://catalog_replica/api/books/decrease/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | Sync The Other Server
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+catalog_server_1          |       Start processing HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+catalog_server_1          |       Sending HTTP request DELETE http://client_cache_server/api/cache/503fc0f7-c326-4742-984f-a531d8e173f8
+catalog_server_1          | send delete to the cache server
+order_server_replica_1    | Purchase done successfully
+order_server_replica_1    | The order has been added successfully
+order_server_replica_1    | The data have been saved successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 4.0714ms - 404
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 4.1362ms - 404
+catalog_server_replica_1  | update has been done successfully
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+catalog_server_1          |       Received HTTP response headers after 15.0929ms - 200
+catalog_server_1          | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+catalog_server_1          |       End processing HTTP request after 15.1807ms - 200
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+order_server_replica_1    |       Start processing HTTP request POST http://order/api/order/addPureOrder
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+order_server_replica_1    |       Sending HTTP request POST http://order/api/order/addPureOrder
+order_server_replica_1    | Sync The Other Server
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+order_server_replica_1    |       Start processing HTTP request DELETE http://client_cache_server/api/cache/orders
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+order_server_replica_1    |       Sending HTTP request DELETE http://client_cache_server/api/cache/orders
+order_server_replica_1    | send delete to the cache server
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+order_server_replica_1    |       Received HTTP response headers after 1.044ms - 404
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+order_server_replica_1    |       End processing HTTP request after 1.1626ms - 404
+order_server_1            | The order has been added successfully
+order_server_1            | The data have been saved successfully
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+client_cache_server_1     |       Received HTTP response headers after 36.1515ms - 200
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+client_cache_server_1     |       End processing HTTP request after 36.2471ms - 200
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+order_server_replica_1    |       Received HTTP response headers after 15.3332ms - 200
+order_server_replica_1    | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+order_server_replica_1    |       End processing HTTP request after 15.4465ms - 200
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+client_cache_server_1     |       Start processing HTTP request POST http://order/api/order/addOrderToCacheAndSync
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+client_cache_server_1     |       Sending HTTP request POST http://order/api/order/addOrderToCacheAndSync
+client_cache_server_1     | send addOrder request to order server
+order_server_1            | Send Query request to CatalogServer
+order_server_1            | Book out of stock
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+client_cache_server_1     |       Received HTTP response headers after 9.7053ms - 500
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+client_cache_server_1     |       End processing HTTP request after 9.7828ms - 500
+order_server_replica_1    | Send Query request to CatalogServer
+order_server_replica_1    | Book out of stock
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[100]
+client_cache_server_1     |       Start processing HTTP request POST http://order_replica/api/order/addOrderToCacheAndSync
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[100]
+client_cache_server_1     |       Sending HTTP request POST http://order_replica/api/order/addOrderToCacheAndSync
+client_cache_server_1     | send addOrder request to order_replica server
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.ClientHandler[101]
+client_cache_server_1     |       Received HTTP response headers after 10.4721ms - 500
+client_cache_server_1     | info: System.Net.Http.HttpClient.Default.LogicalHandler[101]
+client_cache_server_1     |       End processing HTTP request after 10.5753ms - 500

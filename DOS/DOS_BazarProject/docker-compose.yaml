@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  
+  catalog_server:
+    build: ./API/CatalogServer/
+    hostname: catalog
+    ports:
+      - 5025:80
+      - 5026:443
+    volumes:
+      - ./API/CatalogServer/CatalogAPI.db:/app/CatalogAPI.db
+    networks:
+      - network
+  order_server:
+    build: ./API/OrderAPI/
+    hostname: order
+    ports:
+      - 5020:80
+      - 5021:443
+    volumes:
+      - ./API/OrderAPI/OrderAPI.db:/app/OrderAPI.db
+    depends_on:
+      - catalog_server
+    networks:
+      - network   
+networks:
+  network:
